@@ -15,9 +15,10 @@ namespace Class
             get { return name; }
             set { name = value; }
         }
-        public Trainer(string name)
+        public Trainer(string name) //생성자 
         {
-            this.name = name;
+          //  this.name = name;
+            Name = name; 
             monsters = new Monster[6]; //몬스터를 보관할 수 있는 크기 6의 배열
         }
   
@@ -66,29 +67,30 @@ namespace Class
         //이름, 레벨 : 객체의 인스턴스 생성 시 new할당에서 이름과 레벨을 입력받을 수 있도록 구현
         private string name;  
         private int level;
-        public string Name
+        //public string Name
+        //{
+        //   get { return name; }
+        //}
+        //public int Level
+        //{
+        //   get { return level; }
+        //}
+        public string Name { get; set; }
+        public int Level { get; set; }
+        public Monster(string name, int level) //생성자 
         {
-            get { return name; }
-
-        }
-        public int Level
-        {
-            get { return level; }
-
+          //  this.name = name;
+          //  this.level = level;
+            Name = name;
+            Level = level;
         }
         // Print() : 자신(몬스터)에 대한 정보를 출력
-        public Monster(string name, int level)
-        {
-            this.name = name;
-          //자동프로퍼티를 쓰면 출력이 안되나 
-            this.level = level;
-         
-        }
-
         public void Print()
         {
-            Console.WriteLine($"이름:{name}");
-            Console.WriteLine($"레벨:{level}");
+            //Console.WriteLine($"이름:{name}");
+            //Console.WriteLine($"레벨:{level}");
+            Console.WriteLine($"이름:{Name}");
+            Console.WriteLine($"레벨:{Level}");
             Console.WriteLine("ㅡㅡㅡㅡㅡㅡㅡ");
         }
     }
@@ -101,13 +103,13 @@ namespace Class
             Console.WriteLine("트레이너 이름 입력:");
             string InputName = Console.ReadLine();
 
-            Trainer trainer = new Trainer(InputName);
-
-            Monster monster1 = new Monster("브케인", 5); //생성
-            trainer.Add(monster1); //추가 
+            Trainer trainer = new Trainer(InputName); //생성 
+            Monster monster1 = new Monster("브케인", 5); 
             Monster monster2 = new Monster("치코리타", 1);
-            trainer.Add(monster2);
             Monster monster3 = new Monster("리아코", 5);
+
+            trainer.Add(monster1); //추가 
+            trainer.Add(monster2);
             trainer.Add(monster3);
 
             trainer.PrintAll(); //목록출력
